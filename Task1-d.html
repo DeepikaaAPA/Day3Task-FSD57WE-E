@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prime numbers</title>
+  </head>
+  <body>
+    <script>
+      //d.	Return all the prime numbers in an array
+      //***********Anonymous************
+
+      var array = [2, 5, 7, 9, 65, 4, 11];
+
+      // this funtion checks if a number is prime or not
+      // returns a boolean
+      var isPrime = function isPrime(n) {
+        //iterates from i=2 till  i <= (sqrt(n))
+        //if n is divisible by any i, then its not a prime
+        for (var i = 2; i * i <= n; i++) {
+          if (n % i == 0) {
+            /* n is not prime*/
+            return false;
+          }
+        }
+        /* n is prime => no perfect divisor found for n*/
+        return true;
+      };
+      // this function Returns all the prime numbers in an array
+      // returns an array
+
+      var findPrimes = function (array) {
+        var primes = [];
+        for (var n of array) {
+          if (isPrime(n)) primes.push(n);
+        }
+        return primes;
+      };
+      console.log(findPrimes(array));
+
+      /****************IIFE********************/
+
+      console.log(
+        ((array) => {
+          var primes = [];
+          for (var n of array) {
+            if (isPrime(n)) primes.push(n);
+          }
+          return primes;
+        })(array)
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //h.	Rotate an array by k times
+
+      var a = [1, 2, 3, 4, 5, 6];
+      console.log("Inputs : ", ...a);
+      //Anonymous
+      var rotate = function (a, k) {
+        k %= a.length; //find the effective number of rotations since rotating by length of array is of no effect
+        /*
+          split the array from last k elements and
+          then rest of elements
+          join both the slices
+          */
+        var r = a.slice(-k).concat(a.slice(0, a.length - k));
+        return r;
+      };
+      console.log("Anonymous :", rotate(a, 3));
+
+      console.log(
+        "IIFE :",
+        ((a, k) =>
+          a
+            .slice(-(k % a.length))
+            .concat(a.slice(0, a.length - (k % a.length))))(a, 3)
+      );
+    </script>
+  </body>
+</html>

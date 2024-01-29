@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*b.	Convert all the strings to title caps in a string array*/
+
+      //ARROW functions
+      var array = ["hello", "how", "apple", "mango."];
+
+      console.log("Inputs : ", ...array);
+
+      var initCaps = (array) => {
+        //replace the first char of each string to its uppercase
+        for (var i in array) {
+          array[i] = array[i].replace(array[i][0], array[i][0].toUpperCase());
+        }
+      };
+
+      var array = ["hello", "how", "apple", "mango."];
+      //calling the function
+      initCaps(array);
+      console.log(...array);
+    </script>
+  </body>
+</html>

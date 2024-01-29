@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindromes</title>
+  </head>
+  <body>
+    <script>
+      //e.	Return all the palindromes in an array
+      //***********Anonymous************
+
+      var array = ["madam", "hello", "lol", "no", "12221", "noon"];
+      console.log("input :", array);
+      // this funtion checks if a string is palindrome
+      // returns a boolean
+      var isPalindrome = function (s) {
+        var n = s.length;
+        for (var i = 0; i < n / 2; i++) {
+          //check first and last char
+          //and then second and second from last and so on
+          if (s[i] != s[n - 1 - i]) {
+            return false;
+          }
+        }
+        return true;
+      };
+      // this function Returns all the palindromes in an array
+      // returns an array
+
+      var findPalindromes = function (array) {
+        var palindromes = [];
+        for (var n of array) {
+          if (isPalindrome(n)) palindromes.push(n);
+        }
+        return palindromes;
+      };
+      console.log(findPalindromes(array));
+
+      /****************IIFE********************/
+
+      console.log(
+        ((array) => {
+          var palindromes = [];
+
+          for (var s of array) {
+            var isPalindrome = true;
+            var n = s.length;
+            for (var i = 0; i < n / 2; i++) {
+              if (s[i] != s[n - 1 - i]) {
+                isPalindrome = false;
+              }
+            }
+            if (isPalindrome) palindromes.push(s);
+          }
+          return palindromes;
+        })(array)
+      );
+    </script>
+  </body>
+</html>

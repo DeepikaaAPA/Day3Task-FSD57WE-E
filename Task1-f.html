@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Median</title>
+  </head>
+  <body>
+    <script>
+      //f.	Return median of two sorted arrays of the same size.
+
+      var a = [1, 4, 8];
+      var b = [5, 6, 12];
+      console.log("Inputs : ", a, b);
+
+      //Anonymous
+
+      var median = function (a, b) {
+        var c = [];
+        var n = a.length; // arrays are of same length
+        var i = 0,
+          j = 0; // i points to a ;j points to b
+        var k = 0; // k is the pointer to new array c= merging a and b
+        //median is the average of middle 2 elements as new array size will be 2*n=>even
+        //so its enough to find until mid 2 elements which are c[n-1],c[n]
+        while (k <= n) {
+          if (a[i] <= b[j]) {
+            c[k++] = a[i++];
+          } else {
+            c[k++] = b[j++];
+          }
+        }
+        return (c[k - 1] + c[k - 2]) / 2;
+      };
+
+      console.log("Median :\nAnonymous function:", median(a, b));
+
+      //IIFE
+      console.log(
+        " IIFE :",
+        ((a, b) => {
+          var c = [];
+          var n = a.length; // arrays are of same length
+          var i = 0,
+            j = 0; // i points to a ;j points to b
+          var k = 0; // k is the pointer to new array c= merging a and b
+          //median is the average of middle 2 elements as new array size will be 2*n=>even
+          //so its enough to find until mid 2 elements which are c[n-1],c[n]
+          while (k <= n) {
+            if (a[i] <= b[j]) {
+              c[k++] = a[i++];
+            } else {
+              c[k++] = b[j++];
+            }
+          }
+          return (c[k - 1] + c[k - 2]) / 2;
+        })(a, b)
+      );
+    </script>
+  </body>
+</html>
